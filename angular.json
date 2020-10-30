@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "financial-home"
+  "defaultProject": "financial-home",
+  "cli": {
+    "analytics": false
+  }
 }
