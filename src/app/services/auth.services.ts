@@ -25,9 +25,8 @@ export class AuthService {
                     this.token = token;
                 }),
                 catchError(error => {
-                    console.log({ error });
-                    return of([]);
-                })
+                    return of([error]);
+                }),
             ).subscribe();
     }
 

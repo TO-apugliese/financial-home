@@ -1,14 +1,20 @@
-import { NgModule } from '@angular/core';
-import { MatButtonModule, MatIconModule, MatSliderModule, MatToolbarModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http'
-import { HomePageModule } from './pages/home/home.module';
-import { LoginPageModule } from './pages/login/login.module';
-import { AuthService } from './services';
+import { IconsProviderModule } from './icons-provider.module';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { de_DE } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import de from '@angular/common/locales/de';
 
+registerLocaleData(de);
 
 @NgModule({
   declarations: [
@@ -17,16 +23,12 @@ import { AuthService } from './services';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
+    IconsProviderModule,
+    FormsModule,
     HttpClientModule,
-    HomePageModule,
-    LoginPageModule
+    BrowserAnimationsModule
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
