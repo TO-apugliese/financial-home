@@ -1,0 +1,8 @@
+<div class="input-field col s6">
+  <i class="material-icons prefix">{{icon}}</i>
+  <input [(ngModel)]="value"
+         [type]="type"
+         [placeholder]="!!placeholder ? placeholder : field"
+         [id]="field" type="text" class="validate">
+  <label *ngIf="!!label" [for]="field" [class.active]="value">First Name</label>
+</div>

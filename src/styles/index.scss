@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: rainbow-universe;
+  src: url('./fonts/rainbow_universe.ttf');
+}
+
+@font-face {
+  font-family: open-sans-bold;
+  src: url('./fonts/open-sans-condensed-bold.ttf');
+}
+
+@font-face {
+  font-family: open-sans-light;
+  src: url('./fonts/open-sans-condensed-light.ttf');
+}
+
+@font-face {
+  font-family: open-sans-light-italic;
+  src: url('./fonts/open-sans-condensed-light-italic.ttf');
+}
+
+@import './override';
+@import './elements';

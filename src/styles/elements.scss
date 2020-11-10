@@ -1,0 +1,28 @@
+body {
+  font-family: open-sans-light;
+  font-size: 16px;
+
+  .logo {
+    font-family: rainbow-universe;
+  }
+
+  .page {
+    padding: 20px;
+  }
+
+  .text {
+    font-family: open-sans-light !important;
+
+    &--normal {
+      font-size: 16px !important;
+    }
+
+    &--big {
+      font-size: 18px !important;
+    }
+
+    &--bold {
+      font-family: open-sans-bold !important;
+    }
+  }
+}

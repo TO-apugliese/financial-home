@@ -1,0 +1,33 @@
+<nav class="nav-extended">
+  <div class="nav-wrapper">
+    <a href="#" class="logo brand-logo">Financial-Home</a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li *ngFor="let p of pages">
+        <a class="text text--big" [href]="p.path">
+          {{'nav.' + p.name + '.main' | translate}}
+        </a>
+      </li>
+      <li>
+        <a class="text text--big" (click)="logout()">
+          Logout <app-icon name="lock_outline"></app-icon>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-content" *ngIf="subItems.length > 0">
+    <app-tab-headers [items]="subItems"></app-tab-headers>
+  </div>
+</nav>
+<ul class="sidenav" id="mobile-demo">
+  <li *ngFor="let p of pages">
+    <a class="text text--big" [href]="p.path">
+      {{'nav.' + p.name + '.main' | translate}}
+    </a>
+  </li>
+  <li>
+    <a class="text text--big display-flex align-vertical-center space-between" (click)="logout()">
+      Logout <app-icon name="lock_outline"></app-icon>
+    </a>
+  </li>
+</ul>

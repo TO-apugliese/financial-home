@@ -1,0 +1,17 @@
+<div class="page login-page">
+  <div class="form padding-top-3xs">
+    <div class="form__progress progress" *ngIf="showLoading">
+      <div class="indeterminate"></div>
+    </div>
+    <div class="form__fields">
+      <app-input [ref]="credentials" field="userName" icon="account_circle"></app-input>
+      <app-input [ref]="credentials" field="password" [type]="inputType.PASSWORD" icon="lock"></app-input>
+      <button appButton (click)="login()">
+        login
+      </button>
+      <app-message *ngIf="!!msg" [type]="msg.type">
+        <ng-container content>{{msg.text}}</ng-container>
+      </app-message>
+    </div>
+  </div>
+</div>

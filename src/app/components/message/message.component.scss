@@ -1,0 +1,11 @@
+.message {
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+  color: #ffffff;
+
+  &--info {}
+  &--error {}
+  &--success {}
+  &--waring {}
+}

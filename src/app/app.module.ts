@@ -1,34 +1,48 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { IconsProviderModule } from './icons-provider.module';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { de_DE } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {registerLocaleData} from '@angular/common';
 import de from '@angular/common/locales/de';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AuthService, DataService, NavigationService, StorageService} from './services';
+import {IconModule, NavBarModule, TabHeadersModule} from './components';
 
 registerLocaleData(de);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    IconsProviderModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    IconModule,
+    NavBarModule,
+    TabHeadersModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'de',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http, '/assets/i18n/');
+        },
+        deps: [HttpClient],
+      }
+    }),
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    DataService,
+    NavigationService,
+    StorageService,
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

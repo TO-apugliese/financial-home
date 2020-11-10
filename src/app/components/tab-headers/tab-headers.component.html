@@ -1,0 +1,7 @@
+<ul class="tabs tabs-transparent">
+  <li *ngFor="let item of items" class="tab" [class.tab--active]="hash === item">
+    <a class="text text--normal" [href]="'/' + currentPageName + '#' + item">
+      {{'nav.' + currentPageName + '.sub.' + item | translate}}
+    </a>
+  </li>
+</ul>

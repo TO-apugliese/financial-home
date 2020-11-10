@@ -1,0 +1,23 @@
+{
+  "test": "uggi",
+  "table-header": {
+    "_id": "id",
+    "name": "Name",
+    "from": "Ab dem",
+    "until": "Bis zum",
+    "monthlyAmount": "Monatlicher Betrag"
+  },
+  "nav": {
+    "dashboard": {
+      "main": "Dashboard"
+
+    },
+    "ausgaben": {
+      "main": "Ihre Ausgaben",
+      "sub": {
+        "fix-costs": "Ihre fixen Kosten",
+        "variable-costs": "Ihre Variablen Kosten"
+      }
+    }
+  }
+}
