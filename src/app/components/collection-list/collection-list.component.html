@@ -3,7 +3,7 @@
   <tr>
     <th>
       <label>
-        <input type="checkbox" (change)="toggleAll()" [(ngModel)]="allSelected" />
+        <input type="checkbox" (change)="toggleAll()" [(ngModel)]="allSelected"/>
         <span></span>
       </label>
     </th>
@@ -22,10 +22,31 @@
     </td>
     <td *ngFor="let h of headers">{{!!r[h] ? r[h] : '-'}}</td>
     <td>
-      <app-icon name="mode_edit"></app-icon>
-      <app-icon name="delete"></app-icon>
+      <button (click)="openFlyout()" appButton>
+        <app-icon position="right" name="mode_edit"></app-icon>
+        edit
+      </button>
+
+      <button appButton>
+        <app-icon position="right" name="delete"></app-icon>
+        delete
+      </button>
     </td>
   </tr>
   </tbody>
 </table>
 
+<app-flyout #flyout position="right">test</app-flyout>
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>

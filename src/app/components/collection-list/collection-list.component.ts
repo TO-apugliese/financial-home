@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Collections, DataService} from '../../services';
+import {FlyoutComponent} from '..';
 
 declare var M: any;
 
@@ -9,6 +10,8 @@ declare var M: any;
 })
 export class CollectionListComponent implements OnInit {
   @Input() collection: Collections;
+  @ViewChild('flyout') flyout: FlyoutComponent;
+
   instance: any;
   collections: any[];
   allSelected = false;
@@ -21,6 +24,11 @@ export class CollectionListComponent implements OnInit {
   ngOnInit(): void {
     this.db.get(this.collection).then(res => this.collections = res);
     this.db.instance(this.collection).then(res => this.instance = res);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const elems = document.querySelectorAll('.modal');
+      const instances = M.Modal.init(elems);
+    });
   }
 
   get headers(): string[] {
@@ -59,5 +67,9 @@ export class CollectionListComponent implements OnInit {
 
   isChecked(id: string): boolean {
     return this.checkedIds.indexOf(id) > -1;
+  }
+
+  openFlyout(): void {
+    this.flyout.open();
   }
 }

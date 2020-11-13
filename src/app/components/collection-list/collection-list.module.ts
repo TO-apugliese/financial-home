@@ -1,9 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {CollectionListComponent} from './collection-list.component';
 import {TranslateModule} from '@ngx-translate/core';
-import {IconModule} from "..";
-import {FormsModule} from "@angular/forms";
+import {ButtonModule} from '../../directives';
+import {FlyoutModule, IconModule} from '..';
 
 @NgModule({
   declarations: [CollectionListComponent],
@@ -13,6 +14,8 @@ import {FormsModule} from "@angular/forms";
     TranslateModule,
     IconModule,
     FormsModule,
+    ButtonModule,
+    FlyoutModule,
   ]
 })
 export class CollectionListModule {

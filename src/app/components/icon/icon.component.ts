@@ -10,6 +10,6 @@ export enum IconPostion {
   templateUrl: './icon.component.html'
 })
 export class IconComponent {
-  @Input() position = IconPostion.LEFT;
+  @Input() position;
   @Input() name: string;
 }

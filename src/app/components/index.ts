@@ -5,3 +5,4 @@ export * from './message/message.module';
 export * from './nav-bar/nav-bar.module';
 export * from './tab-content/tab-content.module';
 export * from './tab-headers/tab-headers.module';
+export * from './flyout/flyout.module';
