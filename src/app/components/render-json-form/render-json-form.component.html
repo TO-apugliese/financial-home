@@ -1,0 +1,9 @@
+<div class="render-json-form">
+  <div appGrid>
+    <div appRow>
+      <div *ngFor="let m of metaData" appCol="12,6,4,4">
+        <app-input [ref]="data" [field]="m.name" [label]="m.name"></app-input>
+      </div>
+    </div>
+  </div>
+</div>

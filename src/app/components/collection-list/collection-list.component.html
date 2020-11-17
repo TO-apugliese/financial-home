@@ -1,52 +1,58 @@
+<div class="horizontal-right">
+  <button appButton [floating]="true" color="blue" (click)="create()">
+    <i class="material-icons">add</i>
+  </button>
+</div>
 <table class="collection-list responsive-table">
   <thead>
-  <tr>
-    <th>
-      <label>
-        <input type="checkbox" (change)="toggleAll()" [(ngModel)]="allSelected"/>
-        <span></span>
-      </label>
-    </th>
-    <th *ngFor="let h of headers">{{'table-header.' + h | translate }}</th>
-    <th></th>
-  </tr>
+    <tr>
+      <th>
+        <label>
+          <input
+            type="checkbox"
+            (change)="toggleAll()"
+            [(ngModel)]="allSelected"
+          />
+          <span></span>
+        </label>
+      </th>
+      <th *ngFor="let h of headers">{{ "table-header." + h | translate }}</th>
+      <th></th>
+    </tr>
   </thead>
 
   <tbody>
-  <tr *ngFor="let r of rows">
-    <td>
-      <label>
-        <input type="checkbox" (input)="toggle(r['_id'])" [checked]="isChecked(r['_id'])"/>
-        <span></span>
-      </label>
-    </td>
-    <td *ngFor="let h of headers">{{!!r[h] ? r[h] : '-'}}</td>
-    <td>
-      <button (click)="openFlyout()" appButton>
-        <app-icon position="right" name="mode_edit"></app-icon>
-        edit
-      </button>
-
-      <button appButton>
-        <app-icon position="right" name="delete"></app-icon>
-        delete
-      </button>
-    </td>
-  </tr>
+    <tr *ngFor="let r of rows">
+      <td>
+        <label>
+          <input
+            type="checkbox"
+            (input)="toggleOne(r['_id'])"
+            [checked]="isChecked(r['_id'])"
+          />
+          <span></span>
+        </label>
+      </td>
+      <td *ngFor="let h of headers">{{ !!r[h] ? r[h] : "-" }}</td>
+      <td>
+        <button appButton class="margin-right-s" color="blue" (click)="edit(r['_id'])">
+          {{ "form.action.edit" | translate }}
+        </button>
+        <app-modal
+          headlineKey="delete.headline"
+          descriptionKey="delete.description"
+          triggerKey="delete"
+          triggerColor="red"
+          agreeKey="yes"
+          disagreeKey="no"
+          (confirm)="delete(r['_id'])"
+        >
+        </app-modal>
+      </td>
+    </tr>
   </tbody>
 </table>
 
-<app-flyout #flyout position="right">test</app-flyout>
-<!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal modal-fixed-footer">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a class="modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-</div>
+<app-flyout #flyout position="right">
+  <app-render-json-form [instance]="instance" [data]="selected"></app-render-json-form>
+</app-flyout>

@@ -1,0 +1,20 @@
+<!-- Modal Trigger -->
+<a class="waves-effect waves-light btn modal-trigger" [ngClass]="triggerColor" [href]="'#' + controlId">
+  {{'modal.action.' + (triggerKey || 'open') | translate}}
+</a>
+
+<!-- Modal Structure -->
+<div [id]="controlId" class="modal">
+  <div class="modal-content">
+    <h4>{{ 'modal.' + headlineKey | translate }}</h4>
+    <p>{{ 'modal.' + descriptionKey | translate }}</p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn-flat text--big" (click)="onConfirm()">
+      {{'modal.action.' + (agreeKey || 'agree') | translate}}
+    </a>
+    <a class="modal-close waves-effect waves-green btn-flat text--big" (click)="onCancel()">
+      {{'modal.action.' + (disagreeKey || 'disagree') | translate}}
+    </a>
+  </div>
+</div>

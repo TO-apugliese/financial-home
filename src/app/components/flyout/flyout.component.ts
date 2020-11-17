@@ -17,9 +17,9 @@ export class FlyoutComponent {
   @Input() position = FlyoutPosition.RIGHT;
 
   get cssClasses(): string {
-    const closedClass = !this.show ? ` flyout--closed-${this.position}` : '';
+    const closedClass = !this.show ? ` flyout__window--closed-${this.position}` : '';
 
-    return `flyout--${this.position}${closedClass}`;
+    return `flyout__window--${this.position}${closedClass}`;
   }
 
   close(): void {

@@ -1,12 +1,23 @@
-import {Directive, ElementRef} from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
   selector: 'button[appButton]'
 })
-export class ButtonDirective {
-  constructor(el: ElementRef) {
-    el.nativeElement.classList.add('waves-effect');
-    el.nativeElement.classList.add('waves-light');
-    el.nativeElement.classList.add('btn');
+export class ButtonDirective implements OnInit {
+  @Input()
+  floating = false;
+
+  @Input()
+  color: string;
+
+  constructor(private el: ElementRef) {}
+
+  ngOnInit(): void {
+    if (this.floating) this.el.nativeElement.classList.add('btn-floating');
+    if (this.color) this.el.nativeElement.classList.add(this.color);
+
+    this.el.nativeElement.classList.add('waves-effect');
+    this.el.nativeElement.classList.add('waves-light');
+    this.el.nativeElement.classList.add('btn');
   }
 }

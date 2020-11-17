@@ -1,7 +1,10 @@
 {
-  "test": "uggi",
   "table-header": {
     "_id": "id",
+    "_oid": "Besitzer",
+    "basket": "Warenkorb",
+    "origin": "Herkunft",
+    "spendingDate": "Einkaufsdatum",
     "name": "Name",
     "from": "Ab dem",
     "until": "Bis zum",
@@ -18,6 +21,25 @@
         "fix-costs": "Ihre fixen Kosten",
         "variable-costs": "Ihre Variablen Kosten"
       }
+    }
+  },
+  "modal": {
+    "delete": {
+      "headline": "Element Löschen!",
+      "description": "Wollen Sie das Element wirklich löschen?"
+    },
+    "action": {
+      "agree": "Bestätigen",
+      "disagree": "Ablehnen",
+      "yes": "Ja",
+      "no": "Nein",
+      "open": "Öffnen",
+      "delete": "Löschen"
+    }
+  },
+  "form": {
+    "action": {
+      "edit": "Bearbeiten"
     }
   }
 }

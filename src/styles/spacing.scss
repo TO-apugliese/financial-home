@@ -1,0 +1,51 @@
+$directions: 'top', 'bottom', 'left', 'right';
+
+@mixin spacing($spacingType) {
+  @each $d in $directions {
+    &-#{$d} {
+      &-3xs {
+        #{$spacingType}-#{$d}: $size-3xs !important;
+      }
+
+      &-2xs {
+        #{$spacingType}-#{$d}: $size-2xs !important;
+      }
+
+      &-xs {
+        #{$spacingType}-#{$d}: $size-xs !important;
+      }
+
+      &-s {
+        #{$spacingType}-#{$d}: $size-s !important;
+      }
+
+      &-m {
+        #{$spacingType}-#{$d}: $size-m !important;
+      }
+
+      &-l {
+        #{$spacingType}-#{$d}: $size-l !important;
+      }
+
+      &-xl {
+        #{$spacingType}-#{$d}: $size-xl !important;
+      }
+
+      &-2xl {
+        #{$spacingType}-#{$d}: $size-2xl !important;
+      }
+
+      &-3xl {
+        #{$spacingType}-#{$d}: $size-3xl !important;
+      }
+    }
+  }
+}
+
+.margin {
+  @include spacing('margin');
+}
+
+.padding {
+  @include spacing('padding');
+}

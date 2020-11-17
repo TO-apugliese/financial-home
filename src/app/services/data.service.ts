@@ -50,4 +50,22 @@ export class DataService {
         });
     });
   }
+
+  async delete(collection: Collections, id: string): Promise<void> {
+    return new Promise<void>(async (resolve, reject) => {
+      const accessToken = this.auth.token.accessToken;
+
+      this.http
+        .delete(`${this.baseUrl}/${collection}/${id}`, {observe: 'response', headers: new HttpHeaders().set('access-token', accessToken)})
+        .pipe(
+          catchError((s) => of(s)),
+        )
+        .subscribe((data: HttpResponse<any>) => {
+          if (data.status === 200) {
+            resolve();
+          }
+          return reject();
+        });
+    });
+  }
 }

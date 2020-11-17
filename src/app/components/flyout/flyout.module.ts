@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FlyoutComponent} from './flyout.component';
-import {IconModule} from "..";
+import {IconModule} from '../icon/icon.module';
 
 @NgModule({
   declarations: [FlyoutComponent],

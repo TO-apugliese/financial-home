@@ -1,6 +1,7 @@
 export * from './collection-list/collection-list.module';
 export * from './forms';
 export * from './icon/icon.module';
+export * from './render-json-form/render-json-form.module';
 export * from './message/message.module';
 export * from './nav-bar/nav-bar.module';
 export * from './tab-content/tab-content.module';

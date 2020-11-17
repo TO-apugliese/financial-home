@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Pages, PagesConfig} from '../pages';
 import {NavItem} from '../components';
+import {Pages, PagesConfig} from '../config';
 
 @Injectable()
 export class NavigationService {
