@@ -4,12 +4,11 @@ enum PropertyType {
   OBJECT = 'object',
   ARRAY = 'array',
   STRING = 'string',
+  TEXT = 'text',
   NUMBER = 'number',
   DATE = 'date',
   SELECT = 'select'
 }
-
-
 
 interface MetaData {
   name: string,
@@ -19,12 +18,13 @@ interface MetaData {
 
 @Component({
   selector: 'app-render-json-form',
-  templateUrl: './render-json-form.component.html'
+  templateUrl: './render-json-form.component.html',
 })
 export class RenderJsonFormComponent {
   @Input() instance: any;
   @Input() data: any;
 
+  propertyType = PropertyType;
   generatedMetaData: MetaData[] = [];
 
   get metaData(): MetaData[] {
@@ -38,16 +38,18 @@ export class RenderJsonFormComponent {
     if (!instance) return [];
 
     const props = Object.keys(instance);
-    return props.map(name => {
-      const type = this.getType(name, instance[name]);
-      const value = instance[name];
+    return props
+      .filter(k => !k.startsWith('_'))
+      .map(name => {
+        const type = this.getType(name, instance[name]);
+        const value = instance[name];
 
-      return {
-        name,
-        type,
-        item: this.getMetaData(name, value, type as PropertyType),
-      }
-    });
+        return {
+          name,
+          type,
+          item: this.getMetaData(name, value, type as PropertyType),
+        }
+      });
   }
 
   private getMetaData(name: string, obj: any, type: PropertyType): MetaData[] {
@@ -68,6 +70,7 @@ export class RenderJsonFormComponent {
     if (type === PropertyType.OBJECT && Array.isArray(value)) return PropertyType.ARRAY;
     if (type === PropertyType.STRING && isDate) return PropertyType.DATE;
     if (type === PropertyType.STRING && this.contains(value, PropertyType.SELECT)) return PropertyType.SELECT;
+    if (type === PropertyType.STRING) return PropertyType.TEXT;
 
     return type as PropertyType;
   }

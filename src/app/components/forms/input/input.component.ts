@@ -4,6 +4,7 @@ import {FormComponent} from '../form.component';
 export enum InputType {
   TEXT = 'text',
   PASSWORD = 'password',
+  NUMBER = 'number',
 }
 
 @Component({

@@ -16,7 +16,7 @@
     padding: 50px;
     transition: 0.5s;
     z-index: 2;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     &--closed {
       &-right {
@@ -87,5 +87,11 @@
       background-color: black;
       margin-right: 0;
     }
+  }
+
+  &__footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
   }
 }

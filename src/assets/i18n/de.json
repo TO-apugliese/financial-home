@@ -27,19 +27,21 @@
     "delete": {
       "headline": "Element Löschen!",
       "description": "Wollen Sie das Element wirklich löschen?"
-    },
-    "action": {
-      "agree": "Bestätigen",
-      "disagree": "Ablehnen",
-      "yes": "Ja",
-      "no": "Nein",
-      "open": "Öffnen",
-      "delete": "Löschen"
     }
   },
   "form": {
-    "action": {
-      "edit": "Bearbeiten"
-    }
+    "name": "Bezeichnung",
+    "from": "Ab dem",
+    "until": "Bis zum",
+    "monthlyAmount": "Monatlicher Betrag"
+  },
+  "action": {
+    "edit": "Bearbeiten",
+    "confirm": "Bestätigen",
+    "cancel": "Abbrechen",
+    "yes": "Ja",
+    "no": "Nein",
+    "open": "Öffnen",
+    "delete": "Löschen"
   }
 }

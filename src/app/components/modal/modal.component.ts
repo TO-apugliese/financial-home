@@ -23,10 +23,10 @@ export class ModalComponent implements OnInit {
   triggerColor: string;
 
   @Input()
-  agreeKey: string;
+  confirmKey: string;
 
   @Input()
-  disagreeKey: string;
+  cancelKey: string;
 
   @Output()
   confirm = new EventEmitter();

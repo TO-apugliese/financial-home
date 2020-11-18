@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export enum FlyoutPosition {
   LEFT = 'left',
@@ -14,7 +14,21 @@ export enum FlyoutPosition {
 })
 export class FlyoutComponent {
   show = false;
-  @Input() position = FlyoutPosition.RIGHT;
+  showContent = false;
+  @Input()
+  position = FlyoutPosition.RIGHT;
+
+  @Input()
+  confirmKey: string;
+
+  @Input()
+  cancelKey: string;
+
+  @Output()
+  confirm = new EventEmitter();
+
+  @Output()
+  cancel = new EventEmitter();
 
   get cssClasses(): string {
     const closedClass = !this.show ? ` flyout__window--closed-${this.position}` : '';
@@ -28,5 +42,16 @@ export class FlyoutComponent {
 
   open(): void {
     this.show = true;
+    this.showContent = false;
+    this.showContent = true;
+  }
+
+  onConfirm() {
+    this.confirm.emit();
+  }
+
+  onCancel() {
+    this.cancel.emit();
+    this.close();
   }
 }

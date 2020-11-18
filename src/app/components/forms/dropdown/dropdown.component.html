@@ -1,0 +1,8 @@
+
+<div class="select">
+  <select>
+    <option value="" disabled selected>{{'form.select.choose' | translate}}</option>
+    <option *ngFor="let o of items" [value]="o.value">{{'form.' + field + '.' + o.key | translate}}</option>
+  </select>
+  <label *ngIf="!!label">{{'form.' + label | translate}}</label>
+</div>

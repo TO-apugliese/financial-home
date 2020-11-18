@@ -17,7 +17,7 @@
         </label>
       </th>
       <th *ngFor="let h of headers">{{ "table-header." + h | translate }}</th>
-      <th></th>
+      <th>Aktionen</th>
     </tr>
   </thead>
 
@@ -35,16 +35,21 @@
       </td>
       <td *ngFor="let h of headers">{{ !!r[h] ? r[h] : "-" }}</td>
       <td>
-        <button appButton class="margin-right-s" color="blue" (click)="edit(r['_id'])">
-          {{ "form.action.edit" | translate }}
+        <button
+          appButton
+          class="margin-right-s"
+          color="blue"
+          (click)="edit(r['_id'])"
+        >
+          {{ "action.edit" | translate }}
         </button>
         <app-modal
           headlineKey="delete.headline"
           descriptionKey="delete.description"
           triggerKey="delete"
           triggerColor="red"
-          agreeKey="yes"
-          disagreeKey="no"
+          confirmKey="yes"
+          cancelKey="no"
           (confirm)="delete(r['_id'])"
         >
         </app-modal>
@@ -54,5 +59,8 @@
 </table>
 
 <app-flyout #flyout position="right">
-  <app-render-json-form [instance]="instance" [data]="selected"></app-render-json-form>
+  <app-render-json-form
+    [instance]="instance"
+    [data]="selected"
+  ></app-render-json-form>
 </app-flyout>

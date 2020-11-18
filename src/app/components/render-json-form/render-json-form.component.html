@@ -2,7 +2,15 @@
   <div appGrid>
     <div appRow>
       <div *ngFor="let m of metaData" appCol="12,6,4,4">
-        <app-input [ref]="data" [field]="m.name" [label]="m.name"></app-input>
+        <ng-container *ngIf="m.type === propertyType.TEXT">
+          <app-input [ref]="data" [field]="m.name" [label]="m.name"></app-input>
+        </ng-container>
+        <ng-container *ngIf="m.type === propertyType.DATE">
+          <app-date-picker [ref]="data" [field]="m.name" [label]="m.name"></app-date-picker>
+        </ng-container>
+        <ng-container *ngIf="m.type === propertyType.NUMBER">
+          <app-input [ref]="data" [field]="m.name" [label]="m.name" type="number"></app-input>
+        </ng-container>
       </div>
     </div>
   </div>

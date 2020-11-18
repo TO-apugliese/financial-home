@@ -2,6 +2,15 @@
   <div class="flyout__close-area" *ngIf="show" (click)="close()"></div>
   <div class="flyout__window z-depth-5" [ngClass]="cssClasses">
     <app-icon class="flyout__close" name="close" (click)="close()"></app-icon>
-    <ng-content></ng-content>
+    <ng-content *ngIf="showContent"></ng-content>
+
+    <div class="flyout__footer padding-right-m padding-bottom-s">
+      <button appButton color="blue" class="text--big margin-right-s" (click)="onConfirm()">
+        {{'action.' + (confirmKey || 'confirm') | translate}}
+      </button>
+      <button color="red" appButton class="text--big" (click)="onCancel()">
+        {{'action.' + (cancelKey || 'cancel') | translate}}
+      </button>
+    </div>
   </div>
 </div>

@@ -33,7 +33,9 @@ export class CollectionListComponent implements OnInit {
       return [];
     }
 
-    return Object.keys(this.instance);
+    return Object
+      .keys(this.instance)
+      .filter(k => !k.startsWith('_'));
   }
 
   get rows(): any[] {

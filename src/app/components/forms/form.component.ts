@@ -1,9 +1,12 @@
+import { v4 as uuid } from 'uuid';
 import {Component, Input} from '@angular/core';
 
 @Component({
   template: ``,
 })
 export abstract class FormComponent<T = any> {
+  id: string = uuid();
+
   @Input() label: string | undefined | null;
   @Input() placeholder: string | undefined | null;
   @Input() ref: any;

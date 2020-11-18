@@ -1,6 +1,6 @@
 <!-- Modal Trigger -->
 <a class="waves-effect waves-light btn modal-trigger" [ngClass]="triggerColor" [href]="'#' + controlId">
-  {{'modal.action.' + (triggerKey || 'open') | translate}}
+  {{'action.' + (triggerKey || 'open') | translate}}
 </a>
 
 <!-- Modal Structure -->
@@ -11,10 +11,10 @@
   </div>
   <div class="modal-footer">
     <a class="modal-close waves-effect waves-green btn-flat text--big" (click)="onConfirm()">
-      {{'modal.action.' + (agreeKey || 'agree') | translate}}
+      {{'action.' + (confirmKey || 'confirm') | translate}}
     </a>
     <a class="modal-close waves-effect waves-green btn-flat text--big" (click)="onCancel()">
-      {{'modal.action.' + (disagreeKey || 'disagree') | translate}}
+      {{'action.' + (cancelKey || 'cancel') | translate}}
     </a>
   </div>
 </div>

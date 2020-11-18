@@ -2,6 +2,6 @@
   <i *ngIf="!!icon" class="material-icons prefix">{{icon}}</i>
   <input [(ngModel)]="value"
          [type]="type"
-         [id]="field" type="text" class="validate">
-  <label *ngIf="!!label" [for]="field" [class.active]="value">{{'form.' + label | translate}}</label>
+         [id]="field" type="text">
+  <label *ngIf="!!label" [for]="field" class="text--big" [class.active]="value">{{'form.' + label | translate}}</label>
 </div>
