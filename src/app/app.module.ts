@@ -1,3 +1,5 @@
+import { ModelService } from './services/model.service';
+import { SelectService } from './services/select.service';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BrowserModule} from '@angular/platform-browser';
@@ -41,6 +43,8 @@ registerLocaleData(de);
     DataService,
     NavigationService,
     StorageService,
+    SelectService,
+    ModelService,
   ],
   bootstrap: [AppComponent]
 })

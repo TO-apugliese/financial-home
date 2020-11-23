@@ -9,6 +9,7 @@ export abstract class FormComponent<T = any> {
 
   @Input() label: string | undefined | null;
   @Input() placeholder: string | undefined | null;
+  @Input() disabled = false;
   @Input() ref: any;
   @Input() field: string;
 

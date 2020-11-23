@@ -27,4 +27,32 @@ body {
       font-family: open-sans-bold !important;
     }
   }
+
+  .clickable {
+    cursor: pointer;
+  }
+
+  @mixin icon-hover($color) {
+    display: flex;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    border-radius: 50%;
+
+    &:hover {
+      color: #fff;
+      background-color: $color;
+    }
+  }
+
+  .icon-hover {
+    @include icon-hover(#000);
+
+    &--negative {
+      @include icon-hover(red);
+    }
+  }
 }

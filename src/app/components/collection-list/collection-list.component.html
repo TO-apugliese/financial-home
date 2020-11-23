@@ -58,7 +58,7 @@
   </tbody>
 </table>
 
-<app-flyout #flyout position="right">
+<app-flyout #flyout position="right" (confirm)="store()">
   <app-render-json-form
     [instance]="instance"
     [data]="selected"

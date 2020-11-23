@@ -46,11 +46,12 @@ export class FlyoutComponent {
     this.showContent = true;
   }
 
-  onConfirm() {
+  onConfirm(): void {
     this.confirm.emit();
+    this.close();
   }
 
-  onCancel() {
+  onCancel(): void {
     this.cancel.emit();
     this.close();
   }

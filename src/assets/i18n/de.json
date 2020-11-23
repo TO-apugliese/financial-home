@@ -33,7 +33,14 @@
     "name": "Bezeichnung",
     "from": "Ab dem",
     "until": "Bis zum",
-    "monthlyAmount": "Monatlicher Betrag"
+    "monthlyAmount": "Monatlicher Betrag",
+    "origin": "Herkunft",
+    "price": "Preis",
+    "spendingDate": "Deine Ausgabe",
+    "basket": "Ihr Warenkorb",
+    "select": {
+      "choose": "Bitte wählen"
+    }
   },
   "action": {
     "edit": "Bearbeiten",

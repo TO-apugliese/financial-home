@@ -1,3 +1,5 @@
+import { ModelService } from './../../services/model.service';
+import { SelectService } from './../../services/select.service';
 import { HostListener, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Collections, DataService } from '../../services';
 import { FlyoutComponent } from '..';
@@ -18,7 +20,15 @@ export class CollectionListComponent implements OnInit {
   checkedIds = [];
   //#endregion
 
-  constructor(private db: DataService) { }
+  constructor(
+    private db: DataService,
+    private selectSrv: SelectService,
+    private modelSrv: ModelService,
+  ) { }
+
+  public isChecked(id: string): boolean {
+    return this.checkedIds.indexOf(id) > -1;
+  }
 
   //#region LIFECYCLE HOOKS
   ngOnInit(): void {
@@ -48,7 +58,7 @@ export class CollectionListComponent implements OnInit {
   //#endregion
 
   //#region HANDLERS
-  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(evt: KeyboardEvent) {
+  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(evt: KeyboardEvent): void {
     this.flyout.close();
   }
 
@@ -74,39 +84,40 @@ export class CollectionListComponent implements OnInit {
     this.flyout.open();
   }
 
-  create() {
-    this.selected = this.createEmptyObject(this.instance);
-    console.log(this.selected);
+  create(): void {
+    this.selected = this.modelSrv.createEmptyObject(this.instance);
     this.openFlyout();
   }
 
-  edit(id: string) {
-    this.selected = this.collections.find(c => c._id === id);
+  edit(id: string): void {
+    this.selected = this.modelSrv.clone(
+      this.collections
+        .find(c => c._id === id)
+    );
 
     this.openFlyout();
   }
 
-  delete(id: string) {
-    if (!id) return;
+  delete(id: string): void {
+    if (!id) {
+      return;
+    }
 
     this.collections.splice(this.collections.indexOf(id), 1);
     this.db.delete(this.collection, id);
   }
-  //#endregion
 
-  //#region PRIVATE
-  private isChecked(id: string): boolean {
-    return this.checkedIds.indexOf(id) > -1;
-  }
+  async store(): Promise<void> {
+    const isNewItem = !this.collections.find(c => c._id === this.selected._id);
 
-  private createEmptyObject(instance: any) {
-    const copy = JSON.parse(JSON.stringify(instance));
-    Object.keys(copy).forEach(k => {
-      copy[k] = typeof copy[k] === 'object' && Array.isArray(instance[k])
-        ? copy[k].map((item: any) => this.createEmptyObject(item))
-        : null;
-    });
-    return copy;
+    if (isNewItem) {
+      const res = await this.db.post(this.collection, this.selected);
+      this.collections.push(res);
+    }
+    else {
+      this.db.put(this.collection, this.selected);
+      this.collections.splice(this.collections.findIndex(c => c._id === this.selected._id), 1, this.selected);
+    }
   }
   //#endregion
 }

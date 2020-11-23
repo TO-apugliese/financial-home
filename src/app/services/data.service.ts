@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {AuthService} from './auth.services';
-import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
-import {catchError} from "rxjs/operators";
-import {of} from "rxjs";
+import { Injectable } from '@angular/core';
+import { AuthService } from './auth.services';
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
+import { of } from "rxjs";
 
 export enum Collections {
   FIX_COSTS = 'fix-costs',
@@ -20,7 +20,7 @@ export class DataService {
     return new Promise<any[]>(async (resolve) => {
       const accessToken = this.auth.token.accessToken;
       this.http
-        .get(`${this.baseUrl}/${collection}/instance`, {observe: 'response', headers: new HttpHeaders().set('access-token', accessToken)})
+        .get(`${this.baseUrl}/${collection}/instance`, { observe: 'response', headers: new HttpHeaders().set('access-token', accessToken) })
         .pipe(
           catchError((s) => of(s)),
         )
@@ -38,7 +38,7 @@ export class DataService {
       const accessToken = this.auth.token.accessToken;
 
       this.http
-        .get(`${this.baseUrl}/${collection}`, {observe: 'response', headers: new HttpHeaders().set('access-token', accessToken)})
+        .get(`${this.baseUrl}/${collection}`, { observe: 'response', headers: new HttpHeaders().set('access-token', accessToken) })
         .pipe(
           catchError((s) => of(s)),
         )
@@ -56,7 +56,59 @@ export class DataService {
       const accessToken = this.auth.token.accessToken;
 
       this.http
-        .delete(`${this.baseUrl}/${collection}/${id}`, {observe: 'response', headers: new HttpHeaders().set('access-token', accessToken)})
+        .delete(`${this.baseUrl}/${collection}/${id}`, { observe: 'response', headers: new HttpHeaders().set('access-token', accessToken) })
+        .pipe(
+          catchError((s) => of(s)),
+        )
+        .subscribe((data: HttpResponse<any>) => {
+          if (data.status === 200) {
+            resolve();
+          }
+          return reject();
+        });
+    });
+  }
+
+  async post(collection: Collections, item: any): Promise<any[]> {
+    return new Promise<any[]>(async (resolve, reject) => {
+      const accessToken = this.auth.token.accessToken;
+
+      this.http
+        .post(
+          `${this.baseUrl}/${collection}`,
+          item,
+          {
+            observe: 'response',
+            headers: new HttpHeaders()
+              .set('access-token', accessToken)
+          }
+        )
+        .pipe(
+          catchError((s) => of(s)),
+        )
+        .subscribe((data: HttpResponse<any>) => {
+          if (data.status === 200) {
+            resolve(data.body);
+          }
+          return reject();
+        });
+    });
+  }
+
+  async put(collection: Collections, changes: any): Promise<any[]> {
+    return new Promise<any[]>(async (resolve, reject) => {
+      const accessToken = this.auth.token.accessToken;
+
+      this.http
+        .put(
+          `${this.baseUrl}/${collection}`,
+          changes,
+          {
+            observe: 'response',
+            headers: new HttpHeaders()
+              .set('access-token', accessToken)
+          }
+        )
         .pipe(
           catchError((s) => of(s)),
         )

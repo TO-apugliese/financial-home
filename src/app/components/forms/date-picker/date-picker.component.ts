@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Component, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { FormComponent } from '../form.component';
 
 declare var M: any;

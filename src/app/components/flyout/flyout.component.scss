@@ -39,7 +39,7 @@
     &--left,
     &--right {
       width: 100%;
-      max-width: 1024px;
+      max-width: 768px;
       top: 0;
       bottom: 0;
     }
@@ -72,21 +72,7 @@
   &__close {
     position: absolute;
     right: 10px;
-    display: flex;
     top: 10px;
-    cursor: pointer;
-    width: 35px;
-    height: 35px;
-    justify-content: center;
-    align-items: center;
-    transition: 0.4s;
-    border-radius: 50%;
-
-    &:hover {
-      color: #fff;
-      background-color: black;
-      margin-right: 0;
-    }
   }
 
   &__footer {

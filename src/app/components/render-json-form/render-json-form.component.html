@@ -1,17 +1,49 @@
 <div class="render-json-form">
   <div appGrid>
     <div appRow>
-      <div *ngFor="let m of metaData" appCol="12,6,4,4">
+      <ng-container *ngFor="let m of metaData">
         <ng-container *ngIf="m.type === propertyType.TEXT">
-          <app-input [ref]="data" [field]="m.name" [label]="m.name"></app-input>
+          <div appCol="12">
+            <app-input [ref]="data" [field]="m.name" [label]="m.name" [disabled]="disabled"></app-input>
+          </div>
         </ng-container>
         <ng-container *ngIf="m.type === propertyType.DATE">
-          <app-date-picker [ref]="data" [field]="m.name" [label]="m.name"></app-date-picker>
+          <div appCol="12">
+            <app-date-picker [ref]="data" [field]="m.name" [label]="m.name" [disabled]="disabled"></app-date-picker>
+          </div>
         </ng-container>
         <ng-container *ngIf="m.type === propertyType.NUMBER">
-          <app-input [ref]="data" [field]="m.name" [label]="m.name" type="number"></app-input>
+          <div appCol="12">
+            <app-input [ref]="data" [field]="m.name" [label]="m.name" type="number" [disabled]="disabled"></app-input>
+          </div>
         </ng-container>
-      </div>
+        <ng-container *ngIf="m.type === propertyType.SELECT">
+          <div appCol="12">
+            <app-dropdown [ref]="data" [field]="m.name" [label]="m.name" [items]="getSelectOptions(m)" [disabled]="disabled"></app-dropdown>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="m.type === propertyType.ARRAY && !!getFieldValue(m.name)">
+          <div appCol="12">
+            {{'form.' + m.name | translate}}
+          </div>
+          <ng-container *ngFor="let item of getFieldValue(m.name); let i = index">
+            <div appCol="6">
+              <div class="card-panel">
+                <app-icon *ngIf="getFieldValue(m.name).length > 1" class="card-panel__remove icon-hover--negative" name="close" (click)="deleteItem(m, i)"></app-icon>
+                <app-render-json-form [instance]="getFirstValueOfArray(m.name)" [data]="item"></app-render-json-form>
+              </div>
+            </div>
+          </ng-container>
+          <div appCol="6">
+            <div class="card-panel clickable" (click)="addItem(m)" (mouseover)="m.addButtonActive = true" (mouseleave)="m.addButtonActive = false">
+              <app-render-json-form [instance]="getFirstValueOfArray(m.name)" [data]="m.item" [disabled]="true"></app-render-json-form>
+              <button class="card-panel__add" appButton [floating]="true" [color]="m.addButtonActive ? 'blue' : 'grey'" (click)="create()">
+                <i class="material-icons">add</i>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
   </div>
 </div>

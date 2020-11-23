@@ -1,3 +1,6 @@
+import { IconModule } from './../icon/icon.module';
+import { ButtonModule } from './../../directives/button/button.module';
+import { TranslateModule } from '@ngx-translate/core';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RenderJsonFormComponent} from './render-json-form.component';
@@ -11,6 +14,9 @@ import { DatePickerModule } from '../forms/date-picker/date-picker.module';
   exports: [RenderJsonFormComponent],
   imports: [
     CommonModule,
+    TranslateModule,
+    ButtonModule,
+    IconModule,
     InputModule,
     DropdownModule,
     DatePickerModule,

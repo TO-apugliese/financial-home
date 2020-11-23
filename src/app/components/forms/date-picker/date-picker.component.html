@@ -4,6 +4,7 @@
     type="text"
     class="datepicker"
     [ngClass]="'datepicker-' + id"
+    [disabled]="disabled"
   />
-  <label [for]="'datepicker-' + id" class="">{{'form.' + label | translate}}</label>
+  <label [for]="'datepicker-' + id" class="text--big">{{'form.' + label | translate}}</label>
 </div>

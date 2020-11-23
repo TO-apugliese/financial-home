@@ -1,7 +1,7 @@
 <div class="flyout">
   <div class="flyout__close-area" *ngIf="show" (click)="close()"></div>
   <div class="flyout__window z-depth-5" [ngClass]="cssClasses">
-    <app-icon class="flyout__close" name="close" (click)="close()"></app-icon>
+    <app-icon class="flyout__close icon-hover" name="close" (click)="close()"></app-icon>
     <ng-content *ngIf="showContent"></ng-content>
 
     <div class="flyout__footer padding-right-m padding-bottom-s">
