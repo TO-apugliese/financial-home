@@ -1,4 +1,16 @@
 <div class="horizontal-right">
+  <app-modal
+    *ngIf="checkedIds.length > 0"
+    class="margin-right-s"
+    headlineKey="delete.headline"
+    descriptionKey="delete.description"
+    triggerKey="deleteMarked"
+    triggerColor="red"
+    confirmKey="yes"
+    cancelKey="no"
+    (confirm)="deleteMarked()"
+  >
+  </app-modal>
   <button appButton [floating]="true" color="blue" (click)="create()">
     <i class="material-icons">add</i>
   </button>

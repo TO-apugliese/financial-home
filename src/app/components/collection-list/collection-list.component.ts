@@ -107,6 +107,10 @@ export class CollectionListComponent implements OnInit {
     this.db.delete(this.collection, id);
   }
 
+  deleteMarked(): void {
+    this.checkedIds.forEach(id => this.delete(id));
+  }
+
   async store(): Promise<void> {
     const isNewItem = !this.collections.find(c => c._id === this.selected._id);
 

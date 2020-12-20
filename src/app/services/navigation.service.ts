@@ -27,6 +27,11 @@ export class NavigationService {
     return this.route.snapshot.fragment;
   }
 
+  set hash(fragment: string) {
+    console.log(fragment);
+    this.route.snapshot.fragment = fragment;
+  }
+
   get currentPage(): NavItem {
     const pageName = (
       this.router.url

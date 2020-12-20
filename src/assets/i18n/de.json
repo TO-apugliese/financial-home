@@ -8,12 +8,12 @@
     "name": "Name",
     "from": "Ab dem",
     "until": "Bis zum",
-    "monthlyAmount": "Monatlicher Betrag"
+    "monthlyAmount": "Monatlicher Betrag",
+    "amount": "Sparsumme"
   },
   "nav": {
     "dashboard": {
       "main": "Dashboard"
-
     },
     "ausgaben": {
       "main": "Ihre Ausgaben",
@@ -21,6 +21,9 @@
         "fix-costs": "Ihre fixen Kosten",
         "variable-costs": "Ihre Variablen Kosten"
       }
+    },
+    "sparziele": {
+      "main": "Sparziele"
     }
   },
   "modal": {
@@ -40,7 +43,8 @@
     "basket": "Ihr Warenkorb",
     "select": {
       "choose": "Bitte wählen"
-    }
+    },
+    "amount": "Sparsumme"
   },
   "action": {
     "edit": "Bearbeiten",
@@ -49,6 +53,7 @@
     "yes": "Ja",
     "no": "Nein",
     "open": "Öffnen",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "deleteMarked": "Markierte Elemente löschen"
   }
 }

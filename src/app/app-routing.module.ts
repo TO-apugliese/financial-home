@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {AusgabenComponent, DashboardComponent, LoginComponent} from './pages';
+import {AusgabenComponent, DashboardComponent, SavingGoalsComponent, LoginComponent} from './pages';
 import {AuthGuard} from './guards';
 import { Pages } from './config';
 
@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: Pages.DASHBOARD,
     component: DashboardComponent,
-    // loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.AusgabenModule),
+    // loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.SavingGoalsModule),
     canActivate: [AuthGuard],
   },
   {
@@ -26,6 +26,12 @@ const routes: Routes = [
     path: Pages.OUTGOINGS,
     component: AusgabenComponent,
     // loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: Pages.SAVING_GOALS,
+    component: SavingGoalsComponent,
+    // loadChildren: () => import('./pages/saving-goals/saving-goals.module').then(m => m.SavingGoalsModule),
     canActivate: [AuthGuard],
   },
 ];

@@ -1,14 +1,16 @@
-import { v4 as uuidv4 } from 'uuid';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {v4 as uuidv4} from 'uuid';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {NavigationService} from '../../services';
 
 declare var M: any;
 
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html'
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  private _id = uuidv4();
+  private id = uuidv4();
 
   @Input()
   headlineKey: string;
@@ -34,20 +36,27 @@ export class ModalComponent implements OnInit {
   @Output()
   cancel = new EventEmitter();
 
+  constructor(private navigationSrv: NavigationService) {
+  }
+
   ngOnInit(): void {
       const elems = document.querySelectorAll('.modal');
       const instances = M.Modal.init(elems);
   }
 
-  get controlId() {
-    return `app-modal-${this._id}`;
+  get controlId(): string {
+    return `app-modal-${this.id}`;
   }
 
-  onConfirm() {
+  onConfirm(): void {
     this.confirm.emit();
   }
 
-  onCancel() {
+  onCancel(): void {
     this.cancel.emit();
+  }
+
+  openModal(): void {
+    this.navigationSrv.hash = this.controlId;
   }
 }

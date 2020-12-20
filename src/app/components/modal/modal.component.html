@@ -1,7 +1,9 @@
 <!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" [ngClass]="triggerColor" [href]="'#' + controlId">
-  {{'action.' + (triggerKey || 'open') | translate}}
-</a>
+<button appButton [color]="triggerColor">
+  <a class="modal-trigger" [href]="'#' + controlId">
+    {{'action.' + (triggerKey || 'open') | translate}}
+  </a>
+</button>
 
 <!-- Modal Structure -->
 <div [id]="controlId" class="modal">
